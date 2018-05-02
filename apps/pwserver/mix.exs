@@ -25,8 +25,6 @@ defmodule PW.Server.MixProject do
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
-    [
-      {:pwhttphost, in_umbrella: true}
-    ]
+    []
   end
 end

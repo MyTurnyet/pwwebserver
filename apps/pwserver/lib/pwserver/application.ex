@@ -8,12 +8,10 @@ defmodule PW.Server.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Starts a worker by calling: PW.Server.Worker.start_link(arg)
-      # {PW.Server.Worker, arg},
+      {Task.Supervisor, name: PW.Server.TaskSupervisor},
+      Supervisor.child_spec({Task, fn -> PW.Server.listen() end}, restart: :permanent)
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: PW.Server.Supervisor]
     Supervisor.start_link(children, opts)
   end

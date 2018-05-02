@@ -4,3 +4,13 @@
 erl_crash.dump
 *.ez
 *.beam
+.elixir_ls/dialyzer_manifest_20.3_elixir-1.6.4_test
+.elixir_ls/build/test/.mix/compile.protocols
+.elixir_ls/build/test/lib/pwhttphost/.mix/compile.elixir
+.elixir_ls/build/test/lib/pwhttphost/.mix/compile.elixir_scm
+.elixir_ls/build/test/lib/pwhttphost/.mix/compile.xref
+.elixir_ls/build/test/lib/pwhttphost/ebin/pwhttphost.app
+.elixir_ls/build/test/lib/pwserver/.mix/compile.elixir
+.elixir_ls/build/test/lib/pwserver/.mix/compile.elixir_scm
+.elixir_ls/build/test/lib/pwserver/.mix/compile.xref
+.elixir_ls/build/test/lib/pwserver/ebin/pwserver.app
