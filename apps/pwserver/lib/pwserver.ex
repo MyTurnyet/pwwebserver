@@ -58,9 +58,6 @@ defmodule PW.Server do
           end
          _ ->
           Logger.info("Error!")
-
-         # {:ok, data};
-
     end
   end
 end
