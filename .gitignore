@@ -14,3 +14,4 @@ erl_crash.dump
 .elixir_ls/build/test/lib/pwserver/.mix/compile.elixir_scm
 .elixir_ls/build/test/lib/pwserver/.mix/compile.xref
 .elixir_ls/build/test/lib/pwserver/ebin/pwserver.app
+.elixir_ls/dialyzer_manifest_20.2_elixir-1.6.4_test
