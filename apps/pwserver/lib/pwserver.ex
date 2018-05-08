@@ -1,51 +1,66 @@
 defmodule PW.Server do
   require Logger
 
-  def listen(port_number \\ 8091) do
+
+  def listen(tcp_wrapper \\ :gen_tcp, port_number \\ 8091) do
     Logger.info("Opening listener on port #{port_number}")
 
     {:ok, port_socket} =
-      :gen_tcp.listen(port_number, [:binary, packet: :line, active: false, reuseaddr: true])
+      tcp_wrapper.listen(port_number, [:binary, packet: :line, active: false, reuseaddr: true])
 
-    loop_acceptor(port_socket)
+    loop_acceptor(tcp_wrapper, port_socket)
   end
 
-  def loop_acceptor(socket) do
-    {:ok, client} = :gen_tcp.accept(socket)
-    {:ok, pid} = Task.Supervisor.start_child(PW.Server.TaskSupervisor, fn -> serve(client) end)
-    :ok = :gen_tcp.controlling_process(client, pid)
-    loop_acceptor(socket)
+  def loop_acceptor(tcp_wrapper, socket) do
+    {:ok, client} = tcp_wrapper.accept(socket)
+    {:ok, pid} = Task.Supervisor.start_child(PW.Server.TaskSupervisor, fn -> serve(tcp_wrapper, client) end)
+
+    tcp_wrapper.controlling_process(client, pid)
+
+    loop_acceptor(tcp_wrapper, socket)
   end
 
-  defp serve(socket) do
-    Logger.info("recieved data")
-
+  defp serve(tcp_wrapper, socket) do
     socket
-    |> read_line()
-    |> write_line(socket)
-
-    serve(socket)
+    |> read_request(tcp_wrapper)
+    |> write_response(tcp_wrapper, socket)
   end
 
-  defp read_line(socket) do
-    # {:ok, data} = :gen_tcp.recv(socket, 0)
-    :gen_tcp.recv(socket, 0)
-    |> read_open_connection
+  def read_request(socket, tcp_wrapper) do
+     receive_data(tcp_wrapper, socket, [])
+    |> create_response
   end
 
-  defp read_open_connection({:ok, data}) do
-    # {:ok, data} = response
-    Logger.info("reading the line: #{data}")
-    data
+  def create_response({:ok, _data}) do
+    Logger.info("Returning the connection")
+    "HTTP/1.1 200 OK\r\n\r\n"
   end
 
-  defp read_open_connection({:error, :closed}) do
+  def create_response({:error, :closed}) do
     Logger.info("Connection Closed")
-    "connection closed"
   end
 
-  defp write_line(line, socket) do
-    Logger.info("sending it back")
-    :gen_tcp.send(socket, line)
+  defp write_response(line, tcp_wrapper, socket) do
+    Logger.info("Sending back: #{line}")
+    tcp_wrapper.send(socket, line)
+    line
+  end
+
+  def receive_data(tcp_wrapper, socket, data) do
+    case tcp_wrapper.recv(socket,0) do
+        {:ok, line} ->
+          Logger.info("Received this data: #{data}")
+          Logger.info("line == #{line}")
+          if line == "\r\n" do
+            {:ok, data}
+          else
+            receive_data(tcp_wrapper, socket, [data, line])
+          end
+         _ ->
+          Logger.info("Error!")
+
+         # {:ok, data};
+
+    end
   end
 end
