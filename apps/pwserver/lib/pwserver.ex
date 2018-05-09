@@ -20,7 +20,7 @@ defmodule PW.Server do
     loop_acceptor(tcp_wrapper, socket)
   end
 
-  defp serve(tcp_wrapper, socket) do
+  def serve(tcp_wrapper, socket) do
     socket
     |> read_request(tcp_wrapper)
     |> write_response(tcp_wrapper, socket)
@@ -38,6 +38,7 @@ defmodule PW.Server do
 
   def create_response({:error, :closed}) do
     Logger.info("Connection Closed")
+    {:error, :closed}
   end
 
   defp write_response(line, tcp_wrapper, socket) do
