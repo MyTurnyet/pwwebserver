@@ -48,6 +48,11 @@ defmodule PW.ServerTest do
     end
   end
 
+  describe "PW.HttpHandler Tests" do
+    http_response = PW.HttpHandler.handle_request("http://localhost:8091")
+    assert http_response = "HTTP/1.1 200 OK\r\n\r\n"
+  end
+
   describe "PW.FakeTCPWrapper tests" do
     test "PW.FakeTCPWrapper should send data" do
       pid = PW.FakeSocket.start(["a", "b", "c"])
@@ -61,6 +66,7 @@ defmodule PW.ServerTest do
     end
 
   end
+
   describe "PW.FakeSocket tests" do
     test "gets different values each time" do
       pid = PW.FakeSocket.start(["a", "b", "c"])
