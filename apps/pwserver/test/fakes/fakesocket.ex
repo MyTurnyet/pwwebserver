@@ -5,19 +5,19 @@ defmodule PW.FakeSocket do
   end
 
   def execute(state) do
-    Logger.info "State Change: #{state}"
     receive do
       {:get, sender} ->
         [first | rest] = state
         send(sender, first)
         execute(rest);
-      {:put, sender} ->
-        execute(state)
+      {:put, sender, message} ->
+        execute(message);
+        send(sender, message)
     end
   end
 
-  def put(pid, msg) do
-    send(pid, {:put, msg})
+  def put(pid, message) do
+    send(pid, {:put, self(),message})
   end
 
   def get(pid) do

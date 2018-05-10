@@ -32,17 +32,14 @@ defmodule PW.Server do
   end
 
   def create_response({:ok, _data}) do
-    Logger.info("Returning the connection")
     "HTTP/1.1 200 OK\r\n\r\n"
   end
 
   def create_response({:error, :closed}) do
-    Logger.info("Connection Closed")
     {:error, :closed}
   end
 
   defp write_response(line, tcp_wrapper, socket) do
-    Logger.info("Sending back: #{line}")
     tcp_wrapper.send(socket, line)
     line
   end
@@ -50,12 +47,11 @@ defmodule PW.Server do
   def receive_data(tcp_wrapper, socket, data) do
     case tcp_wrapper.recv(socket,0) do
         {:ok, line} ->
-          Logger.info("Received this data: #{data}")
-          Logger.info("line == #{line}")
           if line == "\r\n" do
             {:ok, data}
           else
-            receive_data(tcp_wrapper, socket, [data, line])
+            new_data = data ++ [line]
+            receive_data(tcp_wrapper, socket, new_data)
           end
          _ ->
           Logger.info("Error!")
