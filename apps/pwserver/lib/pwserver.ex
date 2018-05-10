@@ -41,7 +41,6 @@ defmodule PW.Server do
 
   defp write_response(line, tcp_wrapper, socket) do
     tcp_wrapper.send(socket, line)
-    line
   end
 
   def receive_data(tcp_wrapper, socket, data) do

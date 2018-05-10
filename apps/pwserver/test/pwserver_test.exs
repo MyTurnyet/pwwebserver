@@ -36,11 +36,31 @@ defmodule PW.ServerTest do
     test "serve/2 should return http response, " do
       fake_socket = PW.FakeSocket.start(["GET / HTTP/1.1\r\n", "Accept: */*\r\n", "\r\n"])
       output = PW.Server.serve(PW.FakeTCPWrapper, fake_socket )
-      assert output == "HTTP/1.1 200 OK\r\n\r\n"
+      assert output == {:put, "HTTP/1.1 200 OK\r\n\r\n"}
 
+    end
+
+    test "serve/2 should write response to the socket" do
+      fake_socket = PW.FakeSocket.start(["GET / HTTP/1.1\r\n", "Accept: */*\r\n", "\r\n"])
+      PW.Server.serve(PW.FakeTCPWrapper, fake_socket )
+
+      assert PW.FakeSocket.get_output(fake_socket) == {:ok, "HTTP/1.1 200 OK\r\n\r\n"}
     end
   end
 
+  describe "PW.FakeTCPWrapper tests" do
+    test "PW.FakeTCPWrapper should send data" do
+      pid = PW.FakeSocket.start(["a", "b", "c"])
+      {:put, data} = PW.FakeTCPWrapper.send(pid,"test")
+      assert data == "test"
+    end
+    test "PW.FakeTCPWrapper should get a response" do
+      pid = PW.FakeSocket.start(["a", "b", "c"])
+      {:ok,data} = PW.FakeTCPWrapper.recv(pid,{})
+      assert data == "a"
+    end
+
+  end
   describe "PW.FakeSocket tests" do
     test "gets different values each time" do
       pid = PW.FakeSocket.start(["a", "b", "c"])
@@ -58,8 +78,8 @@ defmodule PW.ServerTest do
 
     test "put should push seting to the socket" do
       pid = PW.FakeSocket.start(["q","w","t"])
-      PW.FakeSocket.put(pid, ["Bubbles!"])
-      assert PW.FakeSocket.get(pid) == {:ok,"Bubbles!"}
+      PW.FakeSocket.put(pid, "Bubbles!")
+      assert PW.FakeSocket.get_output(pid) == {:ok,"Bubbles!"}
     end
   end
 end
