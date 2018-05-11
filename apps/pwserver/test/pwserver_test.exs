@@ -7,15 +7,13 @@ defmodule PW.ServerTest do
     test "Should return status 200 headers for GET" do
       fake_socket = PW.FakeSocket.start(["GET / HTTP/1.1\r\n", "Accept: */*\r\n", "\r\n"])
       output = PW.Server.read_request(fake_socket, PW.FakeTCPWrapper)
-
-      assert output.header == "HTTP/1.1 200 OK\r\n\r\n"
+      assert output == "HTTP/1.1 200 OK\r\n\r\n"
     end
 
     test "create_response/1 should return correct value" do
       url_map = %{path: "/"}
       output = PW.Server.create_response(url_map)
-
-      assert output.header == "HTTP/1.1 200 OK\r\n\r\n"
+      assert output == "HTTP/1.1 200 OK\r\n\r\n"
     end
 
     test "recieve_data/3 should return correct values for :ok status" do
@@ -27,7 +25,7 @@ defmodule PW.ServerTest do
     test "serve/2 should return http response, " do
       fake_socket = PW.FakeSocket.start(["GET / HTTP/1.1\r\n", "Accept: */*\r\n", "\r\n"])
       {:put, output} = PW.Server.serve(PW.FakeTCPWrapper, fake_socket )
-      assert output.header ==  "HTTP/1.1 200 OK\r\n\r\n"
+      assert output ==  "HTTP/1.1 200 OK\r\n\r\n"
 
     end
 
@@ -35,7 +33,7 @@ defmodule PW.ServerTest do
       fake_socket = PW.FakeSocket.start(["GET / HTTP/1.1\r\n", "Accept: */*\r\n", "\r\n"])
       PW.Server.serve(PW.FakeTCPWrapper, fake_socket )
       {:ok, output } = PW.FakeSocket.get_output(fake_socket)
-      assert  output.header ==  "HTTP/1.1 200 OK\r\n\r\n"
+      assert  output ==  "HTTP/1.1 200 OK\r\n\r\n"
     end
 
     test "parse_request/1 should return root path" do
