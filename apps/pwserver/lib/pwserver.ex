@@ -28,13 +28,8 @@ defmodule PW.Server do
 
   def read_request(socket, tcp_wrapper) do
       receive_data(tcp_wrapper, socket, [])
-    |> create_response
-  end
-
-  def print_request(request_message) do
-    {:ok, request_message_data} = request_message
-    Logger.info("request:#{ Enum.join( request_message_data, " ")}")
-    request_message
+      |>parse_request
+      |> create_response
   end
 
   def parse_request({:ok, request_message}) do
@@ -43,8 +38,8 @@ defmodule PW.Server do
     %{ :path => path}
   end
 
-  def create_response(url) do
-    "HTTP/1.1 200 OK\r\n\r\n"
+  def create_response(url_map) do
+    PW.HttpHandler.handle_request(url_map)
   end
 
   defp write_response(line, tcp_wrapper, socket) do
