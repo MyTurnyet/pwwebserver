@@ -27,16 +27,24 @@ defmodule PW.Server do
   end
 
   def read_request(socket, tcp_wrapper) do
-     receive_data(tcp_wrapper, socket, [])
+      receive_data(tcp_wrapper, socket, [])
     |> create_response
   end
 
-  def create_response({:ok, _data}) do
-    "HTTP/1.1 200 OK\r\n\r\n"
+  def print_request(request_message) do
+    {:ok, request_message_data} = request_message
+    Logger.info("request:#{ Enum.join( request_message_data, " ")}")
+    request_message
   end
 
-  def create_response({:error, :closed}) do
-    {:error, :closed}
+  def parse_request({:ok, request_message}) do
+    [first_line| _] = request_message
+    [_, path, _] = String.split(first_line," ")
+    %{ :path => path}
+  end
+
+  def create_response(url) do
+    "HTTP/1.1 200 OK\r\n\r\n"
   end
 
   defp write_response(line, tcp_wrapper, socket) do
