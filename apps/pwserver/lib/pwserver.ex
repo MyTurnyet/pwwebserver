@@ -39,8 +39,7 @@ defmodule PW.Server do
   end
 
   def create_response(url_map) do
-    response_map = PW.HttpHandler.handle_request(url_map)
-    response_map.header
+    PW.HttpHandler.create_response(url_map)
   end
 
   defp write_response(line, tcp_wrapper, socket) do

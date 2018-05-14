@@ -26,7 +26,6 @@ defmodule PW.ServerTest do
       fake_socket = PW.FakeSocket.start(["GET / HTTP/1.1\r\n", "Accept: */*\r\n", "\r\n"])
       {:put, output} = PW.Server.serve(PW.FakeTCPWrapper, fake_socket )
       assert output ==  "HTTP/1.1 200 OK\r\n\r\n"
-
     end
 
     test "serve/2 should write response to the socket" do
