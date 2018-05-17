@@ -1,9 +1,8 @@
-defmodule HeaderStatus_Tests do
+defmodule HeaderStatusTests do
   use ExUnit.Case
 require HeaderStatus
 
-describe "HEaderStatus Unit Tests" do
-
+describe "HeaderStatus Unit Tests" do
 
   test "add_200_ok_status/1 will return 200 OK header" do
       response = HeaderStatus.add_200_ok_status(%{})
