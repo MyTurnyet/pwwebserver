@@ -1,29 +1,7 @@
 
 defmodule PW.HttpHandler do
   require Logger
-
-  def add_200_ok_status(response_map) do
-    Map.put(response_map, :header, status: "HTTP/1.1 200 OK")
-  end
-
-  def add_404_not_found_status(response_map) do
-    Map.put(response_map, :header, status: "HTTP/1.1 404 Not Found")
-  end
-
-  def add_418_im_a_teapot_status(response_map) do
-    Map.put(response_map, :header, status: "HTTP/1.1 418 I'm a teapot")
-  end
-
-  def add_404_status_body(response_map) do
-    Map.put(response_map, :body, "")
-  end
-
-  def add_418_status_body(response_map) do
-    header = response_map.header
-    header = header ++ [content_length: "content-length: 12"]
-    response_map = Map.put(response_map, :header, header)
-   Map.put(response_map, :body, "I'm a teapot")
-  end
+  require HeaderStatus
 
   def add_200_status_body(response_map) do
     header = response_map.header
@@ -39,25 +17,25 @@ defmodule PW.HttpHandler do
   end
 
   def response_for_get( "/") do
-    add_200_ok_status(%{})
+    HeaderStatus.add_200_ok_status(%{})
     |> add_200_status_body
     |> format_response
   end
 
   def response_for_get( "/tea") do
-    add_200_ok_status(%{})
+    HeaderStatus.add_200_ok_status(%{})
     |> add_200_status_body
     |> format_response
   end
 
   def response_for_get( "/foobar") do
-    add_404_not_found_status(%{})
-    |> add_404_status_body
+    HeaderStatus.add_404_not_found_status(%{})
+    # |> HeaderStatus.add_404_status_body
     |> format_response
   end
   def response_for_get("/coffee") do
-    add_418_im_a_teapot_status(%{})
-    |> add_418_status_body
+    HeaderStatus.add_418_im_a_teapot_status(%{})
+    |> HeaderStatus.add_418_status_body
     |> format_response
   end
 end

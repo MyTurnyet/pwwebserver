@@ -1,26 +1,8 @@
 defmodule PW.HttpHandlerTest do
   use ExUnit.Case
+  require HeaderStatus
 
   describe "PW.HttpHandler unit Tests" do
-
-    test "add_200_ok_status/1 will return 200 OK header" do
-      response = PW.HttpHandler.add_200_ok_status(%{})
-      headers = response.header
-      assert headers[:status] == "HTTP/1.1 200 OK"
-    end
-
-    test "add_404_not_found_status/1 will return 404 Not Found" do
-      assert PW.HttpHandler.add_404_not_found_status(%{}) == %{header: [status: "HTTP/1.1 404 Not Found"]}
-    end
-
-    test "add_418_im_a_teapot_status/1 will return 418 I'm a teapot" do
-      assert PW.HttpHandler.add_418_im_a_teapot_status(%{}) == %{header: [status: "HTTP/1.1 418 I'm a teapot"]}
-    end
-
-    test "add_418_status_body/1 will return I'm a teapot for the body" do
-      assert PW.HttpHandler.add_418_status_body(%{header: [status: "HTTP/1.1 418 I'm a teapot"]}) ==
-        %{header: [status: "HTTP/1.1 418 I'm a teapot", content_length: "content-length: 12"], body: "I'm a teapot"}
-    end
 
     test "format_response/1 will return the response as a string" do
       output = PW.HttpHandler.format_response(%{path: "/", header: [status: "HTTP/1.1 418 I'm a teapot" ], body: "I'm a teapot"})
