@@ -38,9 +38,9 @@ defmodule PW.Server do
     %{ :request_type => String.upcase(request_type), :path => path}
   end
 
-  def create_response(url_map) do
-    Logger.info(url_map.path)
-    PW.HttpHandler.response_for_get(url_map.path)
+  def create_response(request) do
+    Logger.info(request.path)
+    PW.HttpHandler.handle_request(request)
   end
 
   defp write_response(line, tcp_wrapper, socket) do
