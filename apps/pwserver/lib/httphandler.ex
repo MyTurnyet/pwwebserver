@@ -38,24 +38,24 @@ defmodule PW.HttpHandler do
     "#{response_header}\r\n\r\n#{response_map.body}"
   end
 
-  def create_response( "/") do
+  def response_for_get( "/") do
     add_200_ok_status(%{})
     |> add_200_status_body
     |> format_response
   end
 
-  def create_response( "/tea") do
+  def response_for_get( "/tea") do
     add_200_ok_status(%{})
     |> add_200_status_body
     |> format_response
   end
 
-  def create_response( "/foobar") do
+  def response_for_get( "/foobar") do
     add_404_not_found_status(%{})
     |> add_404_status_body
     |> format_response
   end
-  def create_response("/coffee") do
+  def response_for_get("/coffee") do
     add_418_im_a_teapot_status(%{})
     |> add_418_status_body
     |> format_response

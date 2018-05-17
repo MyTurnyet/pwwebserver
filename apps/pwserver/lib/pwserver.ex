@@ -34,13 +34,13 @@ defmodule PW.Server do
 
   def parse_request({:ok, request_message}) do
     [first_line| _] = request_message
-    [_, path, _] = String.split(first_line," ")
-    %{ :path => path}
+    [request_type, path, _] = String.split(first_line," ")
+    %{ :request_type => String.upcase(request_type), :path => path}
   end
 
   def create_response(url_map) do
     Logger.info(url_map.path)
-    PW.HttpHandler.create_response(url_map.path)
+    PW.HttpHandler.response_for_get(url_map.path)
   end
 
   defp write_response(line, tcp_wrapper, socket) do

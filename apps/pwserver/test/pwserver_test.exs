@@ -11,7 +11,7 @@ defmodule PW.ServerTest do
     end
 
     test "create_response/1 should return correct value" do
-      url_map = %{path: "/"}
+      url_map = %{request_type: "GET", path: "/"}
       output = PW.Server.create_response(url_map)
       assert output == "HTTP/1.1 200 OK\r\ncontent-length: 0\r\n\r\n"
     end
@@ -43,6 +43,15 @@ defmodule PW.ServerTest do
     test "parse_request/1 should return /foobar for path" do
       request = PW.Server.parse_request({:ok, ["GET /foobar HTTP/1.1\r\n", "Accept: */*\r\n", "\r\n"] })
       assert request.path == "/foobar"
+    end
+
+    test "parse_request/1 should return parse requet_type to GET" do
+      request = PW.Server.parse_request({:ok, ["get /foobar HTTP/1.1\r\n", "Accept: */*\r\n", "\r\n"] })
+      assert request.request_type == "GET"
+    end
+    test "parse_request/1 should return parse requet_type to PUT" do
+      request = PW.Server.parse_request({:ok, ["put /foobar HTTP/1.1\r\n", "Accept: */*\r\n", "\r\n"] })
+      assert request.request_type == "PUT"
     end
   end
 
