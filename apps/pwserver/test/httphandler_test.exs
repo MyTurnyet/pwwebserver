@@ -3,36 +3,41 @@ defmodule PW.HttpHandlerTest do
   require HeaderStatus
 
   describe "PW.HttpHandler unit Tests" do
-
     test "format_response/1 will return the response as a string" do
-      output = PW.HttpHandler.format_response(%{path: "/", header: [status: "HTTP/1.1 418 I'm a teapot" ], body: "I'm a teapot"})
+      output =
+        PW.HttpHandler.format_response(%{
+          path: "/",
+          header: [status: "HTTP/1.1 418 I'm a teapot"],
+          body: "I'm a teapot"
+        })
+
       assert output == "HTTP/1.1 418 I'm a teapot\r\n\r\nI'm a teapot"
     end
   end
 
   describe "PW.HttpHandler integration Tests" do
-
     test "call to root URL will return 200 OK" do
       request_map = %{path: "/", request_type: "GET"}
-      response =  PW.HttpHandler.handle_request( request_map)
+      response = PW.HttpHandler.handle_request(request_map)
       assert response == "HTTP/1.1 200 OK\r\ncontent-length: 0\r\n\r\n"
     end
 
     test "call to /tea will return 200 OK" do
       request_map = %{path: "/tea", request_type: "GET"}
-      response =  PW.HttpHandler.handle_request( request_map)
+      response = PW.HttpHandler.handle_request(request_map)
       assert response == "HTTP/1.1 200 OK\r\ncontent-length: 0\r\n\r\n"
     end
 
     test "call to /foobar will return 400 Bad Request" do
       request_map = %{path: "/foobar", request_type: "GET"}
-      assert PW.HttpHandler.handle_request( request_map) == "HTTP/1.1 404 Not Found\r\n\r\n"
+      assert PW.HttpHandler.handle_request(request_map) == "HTTP/1.1 404 Not Found\r\n\r\n"
     end
 
     test "call to /coffee will return 418 I'm a teapot with body" do
       request_map = %{path: "/coffee", request_type: "GET"}
-      assert PW.HttpHandler.handle_request( request_map) ==  "HTTP/1.1 418 I'm a teapot\r\ncontent-length: 12\r\n\r\nI'm a teapot"
-    end
 
+      assert PW.HttpHandler.handle_request(request_map) ==
+               "HTTP/1.1 418 I'm a teapot\r\ncontent-length: 12\r\n\r\nI'm a teapot"
+    end
   end
 end
