@@ -1,6 +1,7 @@
 defmodule PW.HttpHandler do
   require Logger
-  require GetController
+  # require GetController
+  # require HeaderStatus
 
   def format_response(response_map) do
     header = response_map.header
@@ -9,9 +10,16 @@ defmodule PW.HttpHandler do
   end
 
   def handle_request(request_map) do
-    if request_map.request_type == "GET" do
-      GetController.response_for_get(request_map.path)
-      |> format_response
-    end
+    response_map =
+      case request_map.path do
+        "/" -> IndexController.create_response(request_map.request_type)
+        "/tea" -> TeaController.create_response(request_map.request_type)
+        "/coffee" -> CoffeeController.create_response(request_map.request_type)
+        "/method_options" -> MethodOptionsController.create_response(request_map.request_type)
+        "/method_options2" -> MethodOptions2Controller.create_response(request_map.request_type)
+        _ -> HeaderStatus.add_404_not_found_status(%{})
+      end
+
+    format_response(response_map)
   end
 end

@@ -1,10 +1,10 @@
-defmodule OptionsControllerTest do
+defmodule Options2ControllerTest do
   use ExUnit.Case
-  require OptionsController
+  require MethodOptions2Controller
 
-  describe "OptionController Unit Tests" do
-    test "response_for_option/1 should return 200 OK for '/method_options'" do
-      response = OptionsController.response_for_option("/method_options")
+  describe "MethodOptions2Controller Unit Tests" do
+    test "response_for_option/1 should return 200 OK for '/method_options2'" do
+      response = MethodOptions2Controller.response_for_option()
 
       assert response ==
                %{
@@ -12,13 +12,13 @@ defmodule OptionsControllerTest do
                  header: [
                    status: "HTTP/1.1 200 OK",
                    content_length: "content-length: 0",
-                   allow: "allow: GET,HEAD,POST,OPTIONS,PUT"
+                   allow: "allow: GET,OPTIONS,HEAD"
                  ]
                }
     end
 
-    test "response_for_option/1 should return 200 OK for '/method_options2'" do
-      response = OptionsController.response_for_option("/method_options2")
+    test "create_response/1 should return 200 OK for 'OPTIONS'" do
+      response = MethodOptions2Controller.create_response("OPTIONS")
 
       assert response ==
                %{
