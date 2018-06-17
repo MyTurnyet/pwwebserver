@@ -35,6 +35,7 @@ defmodule PW.Server do
 
   def parse_request({:ok, request_message}) do
     [first_line | _] = request_message
+    Logger.info("first_line: #{first_line}")
     [request_type, path, _] = String.split(first_line, " ")
     %{:request_type => String.upcase(request_type), :path => path}
   end

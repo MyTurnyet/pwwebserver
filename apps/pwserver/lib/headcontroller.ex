@@ -1,4 +1,4 @@
-defmodule GetController do
+defmodule HeadController do
   require HeaderStatus
   require Logger
 
@@ -9,29 +9,22 @@ defmodule GetController do
     Map.put(response_map, :body, "")
   end
 
-  def response_for_get("/") do
-    Logger.info("Found '/'")
+  def response_for_head("/") do
+    Logger.info("Found HEAD '/'")
 
     HeaderStatus.add_200_ok_status(%{})
     |> add_200_status_body
   end
 
-  def response_for_get("/tea") do
-    Logger.info("Found '/tea'")
+  def response_for_head("/method_options") do
+    Logger.info("Found HEAD '/method_options'")
 
     HeaderStatus.add_200_ok_status(%{})
     |> add_200_status_body
   end
 
-  def response_for_get("/foobar") do
-    Logger.info("Found '/foobar'")
+  def response_for_head("/foobar") do
+    Logger.info("Found HEAD '/foobar'")
     HeaderStatus.add_404_not_found_status(%{})
-  end
-
-  def response_for_get("/coffee") do
-    Logger.info("Found '/coffee'")
-
-    HeaderStatus.add_418_im_a_teapot_status(%{})
-    |> HeaderStatus.add_418_status_body()
   end
 end

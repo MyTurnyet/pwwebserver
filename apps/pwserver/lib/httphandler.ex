@@ -1,4 +1,3 @@
-
 defmodule PW.HttpHandler do
   require Logger
   require GetController
@@ -15,5 +14,4 @@ defmodule PW.HttpHandler do
       |> format_response
     end
   end
-
 end
