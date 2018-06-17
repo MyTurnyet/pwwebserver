@@ -1,4 +1,4 @@
-defmodule Options2ControllerTest do
+defmodule MethodOptions2ControllerTest do
   use ExUnit.Case
   require MethodOptions2Controller
 
