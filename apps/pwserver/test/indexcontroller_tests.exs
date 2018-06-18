@@ -2,7 +2,7 @@ defmodule IndexControllerTest do
   use ExUnit.Case
   require IndexController
 
-  describe "GetController Unit Tests" do
+  describe "Index Controller Unit Tests" do
     test "create_response/1 should return 200 OK for 'GET'" do
       response = IndexController.create_response("GET")
 

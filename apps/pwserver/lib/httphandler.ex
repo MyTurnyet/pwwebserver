@@ -16,6 +16,7 @@ defmodule PW.HttpHandler do
         "/method_options" -> MethodOptionsController.create_response(request_map.request_type)
         "/method_options2" -> MethodOptions2Controller.create_response(request_map.request_type)
         "/form" -> FormController.create_response(request_map)
+        "/put-target" -> PutTargetController.create_response(request_map.request_type)
         _ -> HeaderStatus.add_404_not_found_status(%{})
       end
 
