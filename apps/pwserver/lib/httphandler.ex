@@ -8,6 +8,8 @@ defmodule PW.HttpHandler do
   end
 
   def handle_request(request_map) do
+    Logger.info(request_map.path)
+
     response_map =
       case request_map.path do
         "/" -> IndexController.create_response(request_map.request_type)
@@ -17,6 +19,7 @@ defmodule PW.HttpHandler do
         "/method_options2" -> MethodOptions2Controller.create_response(request_map.request_type)
         "/form" -> FormController.create_response(request_map)
         "/put-target" -> PutTargetController.create_response(request_map.request_type)
+        "/redirect" -> RedirectController.create_response(request_map.request_type)
         _ -> HeaderStatus.add_404_not_found_status(%{})
       end
 
