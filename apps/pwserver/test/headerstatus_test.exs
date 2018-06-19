@@ -35,7 +35,7 @@ defmodule HeaderStatusTests do
 
     test "add_302_found_status/2 will return 302 Found and location" do
       assert HeaderStatus.add_302_found_status(%{}, "/") == %{
-               header: [status: "HTTP/1.1 302", location: "location: [/]"]
+               header: [status: "HTTP/1.1 302", location: "location: /"]
              }
     end
   end

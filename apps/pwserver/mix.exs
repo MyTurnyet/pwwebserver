@@ -12,7 +12,7 @@ defmodule PW.Server.MixProject do
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      elixirc_paths: elixirc_paths(Mix.env),
+      elixirc_paths: elixirc_paths(Mix.env())
     ]
   end
 
@@ -28,7 +28,6 @@ defmodule PW.Server.MixProject do
   defp deps do
     []
   end
-
 
   defp elixirc_paths(:test), do: ["lib", "test/fakes"]
   defp elixirc_paths(:dev), do: ["lib"]
