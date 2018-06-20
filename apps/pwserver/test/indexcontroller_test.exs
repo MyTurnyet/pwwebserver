@@ -1,6 +1,9 @@
 defmodule IndexControllerTest do
   use ExUnit.Case
-  require IndexController
+
+  def body_text do
+    ""
+  end
 
   describe "Index Controller Unit Tests" do
     test "create_response/1 should return 200 OK for 'GET'" do
@@ -18,7 +21,7 @@ defmodule IndexControllerTest do
 
       assert response ==
                %{
-                 body: "",
+                 body: body_text,
                  header: [status: "HTTP/1.1 200 OK", content_length: "content-length: 0"]
                }
     end
@@ -28,7 +31,7 @@ defmodule IndexControllerTest do
 
       assert response ==
                %{
-                 body: "",
+                 body: body_text,
                  header: [
                    status: "HTTP/1.1 200 OK",
                    content_length: "content-length: 0"
