@@ -11,7 +11,10 @@ defmodule HeaderStatusTests do
 
     test "add_404_not_found_status/1 will return 404 Not Found" do
       assert HeaderStatus.add_404_not_found_status(%{}) == %{
-               header: [status: "HTTP/1.1 404 Not Found"],
+               header: [
+                 status: "HTTP/1.1 404 Not Found",
+                 content_length: "content-length: 0"
+               ],
                body: ""
              }
     end
@@ -36,6 +39,17 @@ defmodule HeaderStatusTests do
     test "add_302_found_status/2 will return 302 Found and location" do
       assert HeaderStatus.add_302_found_status(%{}, "/") == %{
                header: [status: "HTTP/1.1 302", location: "location: /"]
+             }
+    end
+
+    test "add_401_authenticate/1 will return HTTP 401 Unauthorized status" do
+      assert HeaderStatus.add_401_authenticate_status(%{}) == %{
+               header: [
+                 status: "HTTP/1.1 401 Unauthorized",
+                 www_authenticate: "WWW-Authenticate: Basic realm=\"User Visible Realm\"",
+                 content_length: "content-length: 0"
+               ],
+               body: ""
              }
     end
   end

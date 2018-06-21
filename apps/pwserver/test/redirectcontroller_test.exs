@@ -3,7 +3,7 @@ defmodule RedirectControllerTest do
   require RedirectController
 
   describe "Redirect Controller Unit Tests" do
-    test "create_response/1 should return 200 OK for 'GET'" do
+    test "create_response/1 should return 302 OK for 'GET'" do
       response = RedirectController.create_response("GET")
 
       assert response ==
