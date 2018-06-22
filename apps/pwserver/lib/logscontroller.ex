@@ -2,7 +2,9 @@ defmodule LogsController do
   require HeaderStatus
   require Logger
 
-  def create_response(request_type) do
+  def create_response(request_map) do
+    request_type = request_map.request_type
+
     case request_type do
       "GET" -> response_for_get()
       _ -> HeaderStatus.add_404_not_found_status(%{})

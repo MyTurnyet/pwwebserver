@@ -20,7 +20,7 @@ defmodule PW.HttpHandler do
         "/form" -> FormController.create_response(request_map)
         "/put-target" -> PutTargetController.create_response(request_map.request_type)
         "/redirect" -> RedirectController.create_response(request_map.request_type)
-        "/logs" -> LogsController.create_response(request_map.request_type)
+        "/logs" -> LogsController.create_response(request_map)
         _ -> HeaderStatus.add_404_not_found_status(%{})
       end
 
