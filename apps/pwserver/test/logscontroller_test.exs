@@ -1,7 +1,7 @@
 defmodule LogsControllerTest do
   use ExUnit.Case
 
-  def body_text do
+  def body_text() do
     ""
   end
 
@@ -11,13 +11,12 @@ defmodule LogsControllerTest do
 
       assert response ==
                %{
-                 body: body_text,
+                 body: body_text(),
                  header: [
                    status: "HTTP/1.1 401 Unauthorized",
                    www_authenticate: "WWW-Authenticate: Basic realm=\"User Visible Realm\"",
                    content_length: "content-length: 0"
-                 ],
-                 body: ""
+                 ]
                }
     end
   end

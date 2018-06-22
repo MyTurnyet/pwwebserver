@@ -1,7 +1,7 @@
 defmodule IndexControllerTest do
   use ExUnit.Case
 
-  def body_text do
+  def body_text() do
     ""
   end
 
@@ -21,7 +21,7 @@ defmodule IndexControllerTest do
 
       assert response ==
                %{
-                 body: body_text,
+                 body: body_text(),
                  header: [status: "HTTP/1.1 200 OK", content_length: "content-length: 0"]
                }
     end
@@ -31,7 +31,7 @@ defmodule IndexControllerTest do
 
       assert response ==
                %{
-                 body: body_text,
+                 body: body_text(),
                  header: [
                    status: "HTTP/1.1 200 OK",
                    content_length: "content-length: 0"
