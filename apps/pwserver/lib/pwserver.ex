@@ -34,14 +34,20 @@ defmodule PW.Server do
   end
 
   def parse_request({:ok, request_message}) do
-    [first_line | _] = request_message
+    [first_line | message_data] = request_message
     Logger.info("first_line: #{first_line}")
+    Logger.info("message_data: #{message_data}")
     [request_type, path, _] = String.split(first_line, " ")
+    header_map = ParseHeader.to_map(message_data)
+
+    Logger.info("header_map = #{header_map}")
+
     %{:request_type => String.upcase(request_type), :path => path}
+    |> Map.put(:headers, ParseHeader.to_map(message_data))
   end
 
   def create_response(request) do
-    Logger.info(request.path)
+    # Logger.info(request.path)
     PW.HttpHandler.handle_request(request)
   end
 

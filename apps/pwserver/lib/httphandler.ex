@@ -8,7 +8,7 @@ defmodule PW.HttpHandler do
   end
 
   def handle_request(request_map) do
-    Logger.info(request_map.path)
+    # Logger.info(request_map.path)
 
     response_map =
       case request_map.path do

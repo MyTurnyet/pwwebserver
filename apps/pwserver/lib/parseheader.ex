@@ -1,4 +1,6 @@
 defmodule ParseHeader do
+  require Logger
+
   def to_map(request_message) do
     add_headers_to_map(%{}, split_header(request_message))
   end
@@ -15,6 +17,7 @@ defmodule ParseHeader do
   end
 
   def split_header(header) do
+    Logger.info("header to split: #{header}")
     String.split(header, ~r/\r\n/)
   end
 end
