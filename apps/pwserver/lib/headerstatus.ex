@@ -1,9 +1,15 @@
 defmodule HeaderStatus do
+
   def add_empty_response_body(response_map) do
-    header = response_map.header
-    header = header ++ [content_length: "content-length: 0"]
-    response_map = Map.put(response_map, :header, header)
     Map.put(response_map, :body, "")
+    |> add_content_length_header
+  end
+
+  def add_content_length_header(response_map) do
+    content_length = String.length(response_map.body)
+    header_map = response_map.header
+    header_map = header_map ++ [content_length: "content-length: #{content_length}"]
+    Map.put(response_map, :header, header_map)
   end
 
   def add_200_ok_status(response_map) do
@@ -44,8 +50,8 @@ defmodule HeaderStatus do
 
   def add_418_status_body(response_map) do
     header = response_map.header
-    header = header ++ [content_length: "content-length: 12"]
-    response_map = Map.put(response_map, :header, header)
-    Map.put(response_map, :body, "I'm a teapot")
+    Map.put(response_map, :header, header)
+    |> Map.put(:body, "I'm a teapot")
+    |> add_content_length_header
   end
 end

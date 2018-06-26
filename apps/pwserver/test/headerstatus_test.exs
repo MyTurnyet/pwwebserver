@@ -19,14 +19,34 @@ defmodule HeaderStatusTests do
              }
     end
 
+    test "add_content_length_header/1 should return correct Content Length in header" do
+      response_map = %{
+        header: [
+          status: "http/1.1 200 OK"
+        ],
+        body: "1234"
+      }
+
+      response_map = HeaderStatus.add_content_length_header(response_map)
+      assert response_map.header[:content_length] == "content-length: 4"
+    end
+
     test "add_418_im_a_teapot_status/1 will return 418 I'm a teapot" do
       assert HeaderStatus.add_418_im_a_teapot_status(%{}) == %{
-               header: [status: "HTTP/1.1 418 I'm a teapot"]
+               header: [
+                 status: "HTTP/1.1 418 I'm a teapot"
+               ]
              }
     end
 
     test "add_418_status_body/1 will return I'm a teapot for the body" do
-      assert HeaderStatus.add_418_status_body(%{header: [status: "HTTP/1.1 418 I'm a teapot"]}) ==
+      assert HeaderStatus.add_418_status_body(
+               %{
+                 header: [
+                   status: "HTTP/1.1 418 I'm a teapot"
+                 ]
+               }
+             ) ==
                %{
                  header: [
                    status: "HTTP/1.1 418 I'm a teapot",
@@ -38,7 +58,10 @@ defmodule HeaderStatusTests do
 
     test "add_302_found_status/2 will return 302 Found and location" do
       assert HeaderStatus.add_302_found_status(%{}, "/") == %{
-               header: [status: "HTTP/1.1 302", location: "location: /"]
+               header: [
+                 status: "HTTP/1.1 302",
+                 location: "location: /"
+               ]
              }
     end
 

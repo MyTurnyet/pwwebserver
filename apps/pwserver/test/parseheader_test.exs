@@ -5,7 +5,10 @@ defmodule ParseHeaderTests do
     test "to_map/1 should return correct map" do
       header_map = ParseHeader.to_map(["My=Data", "Authorization: Basic QWxhZGRpbjpPcGVuU2VzYW1l"])
 
-      assert header_map == %{My: "Data", Authorization: "Basic QWxhZGRpbjpPcGVuU2VzYW1l"}
+      assert header_map == %{
+               My: "Data",
+               Authorization: "Basic QWxhZGRpbjpPcGVuU2VzYW1l"
+             }
     end
 
     test "add_headers_to_map/2 should return correct map" do
@@ -18,7 +21,10 @@ defmodule ParseHeaderTests do
           ]
         )
 
-      assert header_map == %{My: "Data", Authorization: "Basic QWxhZGRpbjpPcGVuU2VzYW1l"}
+      assert header_map == %{
+               My: "Data",
+               Authorization: "Basic QWxhZGRpbjpPcGVuU2VzYW1l"
+             }
     end
 
   end
