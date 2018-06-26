@@ -6,8 +6,8 @@ defmodule LogsControllerTest do
   end
 
   describe "Logs Controller Unit Tests" do
-    test "response_for_get/1 should return 401 Unathorized when unauthenticated" do
-      response = LogsController.response_for_get()
+    test "unathenticated_response_for_get/0 should return 401 Unathorized when unauthenticated" do
+      response = LogsController.unathenticated_response_for_get()
 
       assert response ==
                %{
@@ -19,5 +19,64 @@ defmodule LogsControllerTest do
                  ]
                }
     end
+    test "athenticated_response_for_get/0 should return 200 OK when unauthenticated" do
+      response = LogsController.athenticated_response_for_get()
+
+      assert response ==
+               %{
+                 body: body_text(),
+                 header: [
+                   status: "HTTP/1.1 200 OK",
+                   content_length: "content-length: 0"
+                 ]
+               }
+    end
+    test "create_response/1 should return 401 Unauthorized when unauthenticated" do
+      request_map = %{path: "/logs", request_type: "GET"}
+
+      response = LogsController.create_response(request_map)
+
+      assert response ==
+               %{
+                 body: body_text(),
+                 header: [
+                   status: "HTTP/1.1 401 Unauthorized",
+                   www_authenticate: "WWW-Authenticate: Basic realm=\"User Visible Realm\"",
+                   content_length: "content-length: 0"
+                 ]
+               }
+    end
+
+    test "create_response/1 should return 200 OK when authenticated" do
+      request_map = %{path: "/logs", request_type: "GET", authorization: "YWRtaW46aHVudGVyMg=="}
+
+      response = LogsController.create_response(request_map)
+
+      assert response ==
+               %{
+                 body: body_text(),
+                 header: [
+                   status: "HTTP/1.1 200 OK",
+                   content_length: "content-length: 0"
+                 ]
+               }
+    end
+
+    test "request_is_authorized/1 should return false" do
+      request_map = %{path: "/logs", request_type: "GET"}
+
+      response = LogsController.request_is_authorized(request_map)
+
+      assert response == false
+    end
+
+    test "request_is_authorized/1 should return true" do
+      request_map = %{path: "/logs", request_type: "GET", authorization: "YWRtaW46aHVudGVyMg=="}
+
+      response = LogsController.request_is_authorized(request_map)
+
+      assert response == true
+    end
+
   end
 end
