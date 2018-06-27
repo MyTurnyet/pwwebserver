@@ -1,11 +1,12 @@
 defmodule PutTargetController do
   require HeaderStatus
+  require PW.HttpHandler
   require Logger
 
   def create_response(request_type) do
     case request_type do
       "PUT" -> response_for_put()
-      _ -> HeaderStatus.add_404_not_found_status(%{})
+      _ -> PW.HttpHandler.send_404_response()
     end
   end
 

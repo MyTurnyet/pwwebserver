@@ -1,9 +1,10 @@
 defmodule HeaderStatus do
+  require BodyFactory
 
-  def add_empty_response_body(response_map) do
-    Map.put(response_map, :body, "")
-    |> add_content_length_header
-  end
+#  def add_empty_response_body(response_map) do
+#    BodyFactory.add_empty_body(response_map)
+#    |> add_content_length_header
+#  end
 
   def add_content_length_header(response_map) do
     content_length = String.length(response_map.body)
@@ -36,12 +37,12 @@ defmodule HeaderStatus do
   def add_401_authenticate_status(response_map) do
     Map.put(response_map, :header, status: "HTTP/1.1 401 Unauthorized")
     |> add_401_authenticate_realm
-    |> add_empty_response_body
+#    |> add_empty_response_body
   end
 
   def add_404_not_found_status(response_map) do
     Map.put(response_map, :header, status: "HTTP/1.1 404 Not Found")
-    |> add_empty_response_body
+#    |> add_empty_response_body
   end
 
   def add_418_im_a_teapot_status(response_map) do
@@ -51,7 +52,7 @@ defmodule HeaderStatus do
   def add_418_status_body(response_map) do
     header = response_map.header
     Map.put(response_map, :header, header)
-    |> Map.put(:body, "I'm a teapot")
+    |> BodyFactory.create_body("I'm a teapot")
     |> add_content_length_header
   end
 end

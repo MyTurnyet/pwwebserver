@@ -13,9 +13,7 @@ defmodule HeaderStatusTests do
       assert HeaderStatus.add_404_not_found_status(%{}) == %{
                header: [
                  status: "HTTP/1.1 404 Not Found",
-                 content_length: "content-length: 0"
-               ],
-               body: ""
+               ]
              }
     end
 
@@ -50,9 +48,9 @@ defmodule HeaderStatusTests do
                %{
                  header: [
                    status: "HTTP/1.1 418 I'm a teapot",
-                   content_length: "content-length: 12"
+                   content_length: "content-length: 51"
                  ],
-                 body: "I'm a teapot"
+                 body: "<html><head></head><body>I'm a teapot</body></html>"
                }
     end
 
@@ -70,9 +68,7 @@ defmodule HeaderStatusTests do
                header: [
                  status: "HTTP/1.1 401 Unauthorized",
                  www_authenticate: "WWW-Authenticate: Basic realm=\"User Visible Realm\"",
-                 content_length: "content-length: 0"
-               ],
-               body: ""
+               ]
              }
     end
   end

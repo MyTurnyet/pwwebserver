@@ -6,11 +6,7 @@ defmodule LogsControllerTest do
   end
 
   def body_with_logs() do
-    "<html><head></head><body>
-    GET /log HTTP/1.1<br/>
-    PUT /these HTTP/1.1<br/>
-    HEAD /requests HTTP/1.1<br/>
-    </body></html>"
+    "<html><head></head><body>GET /log HTTP/1.1<br/>PUT /these HTTP/1.1<br/>HEAD /requests HTTP/1.1<br/></body></html>"
   end
 
   describe "Logs Controller Unit Tests" do
@@ -36,7 +32,7 @@ defmodule LogsControllerTest do
                  body: body_with_logs(),
                  header: [
                    status: "HTTP/1.1 200 OK",
-                   content_length: "content-length: 133"
+                   content_length: "content-length: 113"
                  ]
                }
     end
@@ -73,7 +69,7 @@ defmodule LogsControllerTest do
                  body: body_with_logs(),
                  header: [
                    status: "HTTP/1.1 200 OK",
-                   content_length: "content-length: 133"
+                   content_length: "content-length: 113"
                  ]
                }
     end

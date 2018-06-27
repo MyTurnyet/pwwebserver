@@ -1,5 +1,6 @@
 defmodule LogsController do
   require HeaderStatus
+  require BodyFactory
   require Logger
 
   def create_response(request_map) do
@@ -17,24 +18,22 @@ defmodule LogsController do
     ""
   end
   def body_with_logs() do
-    "<html><head></head><body>
-    GET /log HTTP/1.1<br/>
-    PUT /these HTTP/1.1<br/>
-    HEAD /requests HTTP/1.1<br/>
-    </body></html>"
+    "GET /log HTTP/1.1<br/>PUT /these HTTP/1.1<br/>HEAD /requests HTTP/1.1<br/>"
   end
 
   def authenticated_response_for_get() do
     Logger.info("Logs Controller: GET - Authorized")
 
     HeaderStatus.add_200_ok_status(%{})
-    |> Map.put(:body, body_with_logs())
+    |> BodyFactory.create_body(body_with_logs())
     |> HeaderStatus.add_content_length_header
   end
 
   def unauthenticated_response_for_get() do
     Logger.info("Logs Controller: GET - Unauthorized")
     HeaderStatus.add_401_authenticate_status(%{})
+    |> BodyFactory.add_empty_body
+    |> HeaderStatus.add_content_length_header
   end
 
   def request_is_authorized(request_map) do

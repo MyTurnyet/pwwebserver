@@ -8,10 +8,10 @@ defmodule PW.HttpHandlerTest do
         PW.HttpHandler.format_response(%{
           path: "/",
           header: [status: "HTTP/1.1 418 I'm a teapot"],
-          body: "I'm a teapot"
+          body: "<html><head></head><body>I'm a teapot</body></html>"
         })
 
-      assert output == "HTTP/1.1 418 I'm a teapot\r\n\r\nI'm a teapot"
+      assert output == "HTTP/1.1 418 I'm a teapot\r\n\r\n<html><head></head><body>I'm a teapot</body></html>"
     end
   end
 
@@ -32,7 +32,7 @@ defmodule PW.HttpHandlerTest do
       request_map = %{path: "/coffee", request_type: "GET"}
 
       assert PW.HttpHandler.handle_request(request_map) ==
-               "HTTP/1.1 418 I'm a teapot\r\ncontent-length: 12\r\n\r\nI'm a teapot"
+               "HTTP/1.1 418 I'm a teapot\r\ncontent-length: 51\r\n\r\n<html><head></head><body>I'm a teapot</body></html>"
     end
 
     test "GET call to /method_options will return 200 OK" do

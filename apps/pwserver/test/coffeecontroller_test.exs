@@ -8,10 +8,10 @@ defmodule CoffeeControllerTest do
 
       assert response ==
                %{
-                 body: "I'm a teapot",
+                 body: "<html><head></head><body>I'm a teapot</body></html>",
                  header: [
                    status: "HTTP/1.1 418 I'm a teapot",
-                   content_length: "content-length: 12"
+                   content_length: "content-length: 51"
                  ]
                }
     end
