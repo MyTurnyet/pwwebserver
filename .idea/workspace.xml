@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9dd92a1-e982-4c08-9f86-677edeb72155" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/apps/pwserver/lib/cookiecontroller.ex" beforeDir="false" afterPath="$PROJECT_DIR$/apps/pwserver/lib/cookiecontroller.ex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/pwserver/lib/httphandler.ex" beforeDir="false" afterPath="$PROJECT_DIR$/apps/pwserver/lib/httphandler.ex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/pwserver/lib/pwserver.ex" beforeDir="false" afterPath="$PROJECT_DIR$/apps/pwserver/lib/pwserver.ex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/pwserver/test/cookie_test.exs" beforeDir="false" afterPath="$PROJECT_DIR$/apps/pwserver/test/cookie_test.exs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/pwserver/test/httphandler_test.exs" beforeDir="false" afterPath="$PROJECT_DIR$/apps/pwserver/test/httphandler_test.exs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/pwserver/test/pwserver_test.exs" beforeDir="false" afterPath="$PROJECT_DIR$/apps/pwserver/test/pwserver_test.exs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,12 +20,12 @@
     <favorites_list name="pwwebserver" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="cookiecontroller.ex" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/pwserver/lib/cookiecontroller.ex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+            <state relative-caret-position="285">
+              <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -29,35 +33,17 @@
       <file leaf-file-name="httphandler.ex" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/pwserver/lib/httphandler.ex">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+            <state relative-caret-position="240">
+              <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="httphandler_test.exs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="httphandler_test.exs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/apps/pwserver/test/httphandler_test.exs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="718">
-              <caret line="101" column="13" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pwserver_test.exs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/pwserver/test/pwserver_test.exs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="59" column="26" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pwserver.ex" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/apps/pwserver/lib/pwserver.ex">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="49" column="24" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="24" />
+            <state relative-caret-position="253">
+              <caret line="36" column="59" lean-forward="true" selection-start-line="36" selection-start-column="59" selection-end-line="36" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -65,13 +51,18 @@
       <file leaf-file-name="cookie_test.exs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/pwserver/test/cookie_test.exs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+            <state relative-caret-position="165">
+              <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>getwith</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -94,17 +85,18 @@
         <option value="$PROJECT_DIR$/apps/pwserver/lib/bodyfactory.ex" />
         <option value="$PROJECT_DIR$/apps/pwserver/test/bodyfactory_test.exs" />
         <option value="$PROJECT_DIR$/apps/pwserver/test/coffeecontroller_test.exs" />
-        <option value="$PROJECT_DIR$/apps/pwserver/test/httphandler_test.exs" />
         <option value="$PROJECT_DIR$/apps/pwserver/lib/headerstatus.ex" />
-        <option value="$PROJECT_DIR$/apps/pwserver/lib/httphandler.ex" />
         <option value="$PROJECT_DIR$/apps/pwserver/lib/formcontroller.ex" />
         <option value="$PROJECT_DIR$/apps/pwserver/lib/puttargetcontroller.ex" />
         <option value="$PROJECT_DIR$/apps/pwserver/lib/logscontroller.ex" />
         <option value="$PROJECT_DIR$/apps/pwserver/test/headerstatus_test.exs" />
-        <option value="$PROJECT_DIR$/apps/pwserver/test/cookie_test.exs" />
-        <option value="$PROJECT_DIR$/apps/pwserver/lib/cookiecontroller.ex" />
         <option value="$PROJECT_DIR$/apps/pwserver/test/pwserver_test.exs" />
         <option value="$PROJECT_DIR$/apps/pwserver/lib/pwserver.ex" />
+        <option value="$PROJECT_DIR$/apps/pwserver/lib/httphandler.ex" />
+        <option value="$PROJECT_DIR$/apps/pwserver/lib/cookiecontroller.ex" />
+        <option value="$PROJECT_DIR$/apps/pwserver/test/cookie_test.exs" />
+        <option value="$PROJECT_DIR$/apps/pwserver/test/httphandler_test.exs" />
+        <option value="$PROJECT_DIR$/../cob_spec/src/main/java/util/Http.java" />
       </list>
     </option>
   </component>
@@ -119,8 +111,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -165,6 +155,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -258,7 +250,7 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.1734104" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.1734104" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
       <window_info content_ui="combo" id="Project" order="0" side_tool="true" weight="0.40726817" />
@@ -281,6 +273,48 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/apps/pwserver/lib/cookiecontroller.ex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/pwserver/lib/httphandler.ex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/pwserver/test/httphandler_test.exs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1515">
+          <caret line="101" column="13" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/pwserver/test/pwserver_test.exs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="59" column="26" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/pwserver/test/cookie_test.exs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/pwserver/lib/pwserver.ex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="49" column="24" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apps/pwserver/lib/pwserver.ex">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
@@ -320,9 +354,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
           <caret line="48" column="54" lean-forward="true" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
-          <folding>
-            <marker date="1530118471056" expanded="true" signature="1795:2350" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -490,9 +521,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="34" column="54" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
-          <folding>
-            <marker date="1530118471056" expanded="true" signature="1795:2350" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -524,45 +552,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/pwserver/test/cookie_test.exs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/pwserver/lib/cookiecontroller.ex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/pwserver/lib/httphandler.ex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/pwserver/test/httphandler_test.exs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
-          <caret line="101" column="13" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/pwserver/test/pwserver_test.exs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="59" column="26" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
+        <state relative-caret-position="498">
+          <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/pwserver/lib/pwserver.ex">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="49" column="24" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="24" />
+        <state relative-caret-position="312">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/pwserver/lib/httphandler.ex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../cob_spec/src/main/java/Server.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/pwserver/lib/cookiecontroller.ex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/pwserver/test/cookie_test.exs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../cob_spec/src/main/java/util/Http.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="63" column="57" lean-forward="true" selection-start-line="63" selection-start-column="57" selection-end-line="63" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/pwserver/test/httphandler_test.exs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="36" column="59" lean-forward="true" selection-start-line="36" selection-start-column="59" selection-end-line="36" selection-end-column="59" />
         </state>
       </provider>
     </entry>

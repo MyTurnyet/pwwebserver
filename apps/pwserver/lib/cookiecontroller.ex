@@ -17,7 +17,7 @@ defmodule Cookiecontroller do
     Logger.info("Cookie Controller: GET")
 
     HeaderStatus.add_200_ok_status(%{})
-    |> BodyFactory.create_body("Eat")
+    |> BodyFactory.create_body("Eat<br/>mmmm chocolate")
     |> HeaderStatus.add_content_length_header
   end
 end

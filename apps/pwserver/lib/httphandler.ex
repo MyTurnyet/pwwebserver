@@ -14,6 +14,7 @@ defmodule PW.HttpHandler do
         "/" -> IndexController.create_response(request_map.request_type)
         "/tea" -> TeaController.create_response(request_map.request_type)
         "/coffee" -> CoffeeController.create_response(request_map.request_type)
+        "/cookie" -> Cookiecontroller.create_response(request_map)
         "/method_options" -> MethodOptionsController.create_response(request_map.request_type)
         "/method_options2" -> MethodOptions2Controller.create_response(request_map.request_type)
         "/form" -> FormController.create_response(request_map)

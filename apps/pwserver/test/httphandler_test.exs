@@ -22,6 +22,12 @@ defmodule PW.HttpHandlerTest do
       assert response == "HTTP/1.1 200 OK\r\ncontent-length: 0\r\n\r\n"
     end
 
+    test "call to '/cookie?type=chocolate' will return 200 OK" do
+      request_map = %{path: "/cookie", request_type: "GET", querystring: ["type=chocolate"]}
+      response = PW.HttpHandler.handle_request(request_map)
+      assert response == "HTTP/1.1 200 OK\r\ncontent-length: 61\r\n\r\n<html><head></head><body>Eat<br/>mmmm chocolate</body></html>"
+    end
+
     test "call to /tea will return 200 OK" do
       request_map = %{path: "/tea", request_type: "GET"}
       response = PW.HttpHandler.handle_request(request_map)

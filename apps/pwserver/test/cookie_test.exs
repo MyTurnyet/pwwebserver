@@ -6,17 +6,17 @@ defmodule CookieTests do
       response = Cookiecontroller.response_for_get()
       assert response ==
                %{
-                 body: "<html><head></head><body>Eat</body></html>",
+                 body: "<html><head></head><body>Eat<br/>mmmm chocolate</body></html>",
                  header: [
                    status: "HTTP/1.1 200 OK",
-                   content_length: "content-length: 42"
+                   content_length: "content-length: 61"
                  ]
                }
     end
 
     test "create_response/1 should return 200 OK for 'GET'" do
       request_map = %{
-        path: "/form",
+        path: "/cookie",
         request_type: "GET",
         querystring: [
           type: "chocolate"
@@ -26,10 +26,10 @@ defmodule CookieTests do
 
       assert response ==
                %{
-                 body: "<html><head></head><body>Eat</body></html>",
+                 body: "<html><head></head><body>Eat<br/>mmmm chocolate</body></html>",
                  header: [
                    status: "HTTP/1.1 200 OK",
-                   content_length: "content-length: 42"
+                   content_length: "content-length: 61"
                  ]
                }
     end
