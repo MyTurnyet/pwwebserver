@@ -46,6 +46,24 @@ defmodule PW.ServerTest do
       assert request.path == "/foobar"
     end
 
+    test "add_path_and_querystring/2 should return just path, when no querystring is passed" do
+      request = PW.Server.add_path_and_querystring(%{request_type: "GET"}, "/foobar")
+      assert request = %{request_type: "GET", path: "/foobar"}
+    end
+
+    test "add_path_and_querystring/2 should return path and querystring" do
+      request = PW.Server.add_path_and_querystring(%{request_type: "GET"}, "/foobar?bar=123")
+      assert request = %{
+               request_type: "GET",
+               path: "/foobar",
+               querystring: [
+                 #                 bar: "123"
+                 "bar=123"
+               ]
+             }
+    end
+
+
     test "parse_request/1 should return parse requet_type to GET" do
       request =
         PW.Server.parse_request({:ok, ["get /foobar HTTP/1.1\r\n", "Accept: */*\r\n", "\r\n"]})

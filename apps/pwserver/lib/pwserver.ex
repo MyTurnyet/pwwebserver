@@ -34,12 +34,27 @@ defmodule PW.Server do
   end
 
   def parse_request({:ok, request_message}) do
-    [first_line | message_data] = request_message
-    [request_type, path, _] = String.split(first_line, " ")
+    inspect request_message
+            |> Logger.debug
 
-    %{:request_type => String.upcase(request_type), :path => path}
+    [first_line | message_data] = request_message
+    [request_type, request_path, _] = String.split(first_line, " ")
+
+    %{:request_type => String.upcase(request_type)}
+    |> add_path_and_querystring(request_path)
     |> Map.put(:headers, ParseHeader.to_map(message_data))
   end
+
+  def add_path_and_querystring(request_map, request_path) do
+    if String.contains?(request_path, "?") do
+      [path, querystring] = String.split(request_path, "?")
+      Map.put(request_map, :path, path)
+      |> Map.put(:querystring, [querystring])
+    else
+      Map.put(request_map, :path, request_path)
+    end
+  end
+
 
   def create_response(request) do
     PW.HttpHandler.handle_request(request)
