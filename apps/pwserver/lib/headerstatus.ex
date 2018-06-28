@@ -16,13 +16,16 @@ defmodule HeaderStatus do
   def add_200_ok_status(response_map) do
     Map.put(response_map, :header, status: "HTTP/1.1 200 OK")
   end
-
+  def add_201_created_status(response_map, redirect_location) do
+    Map.put(response_map, :header, status: "HTTP/1.1 201 Created")
+    |>add_location_header(redirect_location)
+  end
   def add_302_found_status(response_map, redirect_location) do
     Map.put(response_map, :header, status: "HTTP/1.1 302")
-    |> add_302_redirect_location(redirect_location)
+    |> add_location_header(redirect_location)
   end
 
-  def add_302_redirect_location(response_map, redirect_location) do
+  def add_location_header(response_map, redirect_location) do
     header = response_map.header
     header = header ++ [location: "location: #{redirect_location}"]
     Map.put(response_map, :header, header)

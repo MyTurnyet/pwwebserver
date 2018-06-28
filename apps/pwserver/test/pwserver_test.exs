@@ -48,12 +48,13 @@ defmodule PW.ServerTest do
 
     test "add_path_and_querystring/2 should return just path, when no querystring is passed" do
       request = PW.Server.add_path_and_querystring(%{request_type: "GET"}, "/foobar")
-      assert request = %{request_type: "GET", path: "/foobar"}
+
+      assert request == %{request_type: "GET", path: "/foobar"}
     end
 
     test "add_path_and_querystring/2 should return path and querystring" do
       request = PW.Server.add_path_and_querystring(%{request_type: "GET"}, "/foobar?bar=123")
-      assert request = %{
+      assert request == %{
                request_type: "GET",
                path: "/foobar",
                querystring: [

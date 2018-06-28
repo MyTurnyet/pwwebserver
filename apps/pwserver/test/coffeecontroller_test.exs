@@ -3,7 +3,7 @@ defmodule CoffeeControllerTest do
   require TeaController
 
   describe "CoffeeController Unit Tests" do
-    test "response_for_get/1 should return 400 Bad Request for '/coffee'" do
+    test "response_for_get/0 should return 400 Bad Request for '/coffee'" do
       response = CoffeeController.response_for_get()
 
       assert response ==
