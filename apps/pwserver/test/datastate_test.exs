@@ -1,26 +1,25 @@
 defmodule DataStateTests do
   use ExUnit.Case
+  require Logger
 
   describe "DataState unit tests" do
+    setup do
+      {state, data_state} = DataState.new
+      Logger.debug "Current data state: #{state}"
 
-    test "new/1 should initialize data" do
-      {:ok,data_state} = DataState.new
-      data = DataState.get(data_state)
-      assert data == ""
+#      %{state: data_state}
     end
 
     test "post/2 should set data" do
-      {:ok,data_state} = DataState.new
-      DataState.post(data_state, "foobar")
-      data = DataState.get(data_state)
+      DataState.post("foobar")
+      data = DataState.get()
       assert data == "foobar"
     end
 
     test "delete/2 deletes the existing data" do
-      {:ok,data_state} = DataState.new
-      DataState.post(data_state, "foobar")
-      data = DataState.delete(data_state)
-    assert data == :ok
+      DataState.post("foobar")
+      data = DataState.delete()
+      assert data == :ok
     end
 
   end

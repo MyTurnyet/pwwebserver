@@ -3,6 +3,7 @@ defmodule PW.Server do
 
   def listen(tcp_wrapper \\ :gen_tcp, port_number \\ 5000) do
     Logger.info("Opening listener on port #{port_number}")
+    DataState.new
 
     {:ok, port_socket} =
       tcp_wrapper.listen(port_number, [:binary, packet: :line, active: false, reuseaddr: true])
