@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9dd92a1-e982-4c08-9f86-677edeb72155" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/pwserver/lib/catformcontroller.ex" beforeDir="false" afterPath="$PROJECT_DIR$/apps/pwserver/lib/catformcontroller.ex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/pwserver/lib/datastate.ex" beforeDir="false" afterPath="$PROJECT_DIR$/apps/pwserver/lib/datastate.ex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/pwserver/lib/pwserver.ex" beforeDir="false" afterPath="$PROJECT_DIR$/apps/pwserver/lib/pwserver.ex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/pwserver/test/catformcontroller_test.exs" beforeDir="false" afterPath="$PROJECT_DIR$/apps/pwserver/test/catformcontroller_test.exs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/pwserver/test/datastate_test.exs" beforeDir="false" afterPath="$PROJECT_DIR$/apps/pwserver/test/datastate_test.exs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,8 +28,8 @@
       <file leaf-file-name="catformcontroller_test.exs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/apps/pwserver/test/catformcontroller_test.exs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+            <state relative-caret-position="30">
+              <caret line="2" column="22" lean-forward="true" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -66,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/apps/pwserver/test/datastate_test.exs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+              <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -123,8 +118,8 @@
         <option value="$PROJECT_DIR$/apps/pwserver/lib/datastate.ex" />
         <option value="$PROJECT_DIR$/apps/pwserver/lib/pwserver.ex" />
         <option value="$PROJECT_DIR$/apps/pwserver/test/datastate_test.exs" />
-        <option value="$PROJECT_DIR$/apps/pwserver/test/catformcontroller_test.exs" />
         <option value="$PROJECT_DIR$/apps/pwserver/lib/catformcontroller.ex" />
+        <option value="$PROJECT_DIR$/apps/pwserver/test/catformcontroller_test.exs" />
       </list>
     </option>
   </component>
@@ -591,7 +586,7 @@
     <entry file="file://$PROJECT_DIR$/apps/pwserver/test/datastate_test.exs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -604,8 +599,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/pwserver/test/catformcontroller_test.exs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        <state relative-caret-position="30">
+          <caret line="2" column="22" lean-forward="true" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
         </state>
       </provider>
     </entry>

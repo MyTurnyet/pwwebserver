@@ -5,6 +5,7 @@ defmodule CatFormControllerTests do
   describe "CatForm Controller unit tests" do
 
     test "response_for_get/0 shoulde return 404 Not Found when no data set" do
+      DataState.post("")
       response = CatFormController.response_for_get()
 
       assert response ==
