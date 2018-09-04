@@ -3,7 +3,8 @@ defmodule ParseHeaderTests do
 
   describe "Parse Header Unit Tests" do
     test "to_map/1 should return correct map" do
-      header_map = ParseHeader.to_map(["My=Data", "Authorization: Basic QWxhZGRpbjpPcGVuU2VzYW1l"])
+      header_map =
+        ParseHeader.to_map(["My=Data", "Authorization: Basic QWxhZGRpbjpPcGVuU2VzYW1l"])
 
       assert header_map == %{
                My: "Data",
@@ -26,6 +27,5 @@ defmodule ParseHeaderTests do
                Authorization: "Basic QWxhZGRpbjpPcGVuU2VzYW1l"
              }
     end
-
   end
 end

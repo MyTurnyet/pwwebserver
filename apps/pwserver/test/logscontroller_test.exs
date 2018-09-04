@@ -96,6 +96,5 @@ defmodule LogsControllerTest do
 
       assert LogsController.request_is_authorized(request_map) == true
     end
-
   end
 end

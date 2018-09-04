@@ -13,8 +13,9 @@ defmodule FormController do
   def add_200_status_body(response_map) do
     header = response_map.header
     header = header ++ [content_length: "content-length: 0"]
+
     Map.put(response_map, :header, header)
-    |> BodyFactory.add_empty_body
+    |> BodyFactory.add_empty_body()
   end
 
   def response_for_post() do

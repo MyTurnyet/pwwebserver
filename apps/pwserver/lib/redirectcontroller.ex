@@ -20,7 +20,7 @@ defmodule RedirectController do
     Logger.info("Redirect Controller: GET")
 
     HeaderStatus.add_302_found_status(%{}, "/")
-    |> BodyFactory.add_empty_body
-    |> HeaderStatus.add_content_length_header
+    |> BodyFactory.add_empty_body()
+    |> HeaderStatus.add_content_length_header()
   end
 end

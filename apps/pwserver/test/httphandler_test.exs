@@ -7,11 +7,14 @@ defmodule PW.HttpHandlerTest do
       output =
         PW.HttpHandler.format_response(%{
           path: "/",
-          header: [status: "HTTP/1.1 418 I'm a teapot"],
+          header: [
+            status: "HTTP/1.1 418 I'm a teapot"
+          ],
           body: "<html><head></head><body>I'm a teapot</body></html>"
         })
 
-      assert output == "HTTP/1.1 418 I'm a teapot\r\n\r\n<html><head></head><body>I'm a teapot</body></html>"
+      assert output ==
+               "HTTP/1.1 418 I'm a teapot\r\n\r\n<html><head></head><body>I'm a teapot</body></html>"
     end
   end
 
@@ -19,13 +22,34 @@ defmodule PW.HttpHandlerTest do
     test "call to '/' will return 200 OK" do
       request_map = %{path: "/", request_type: "GET"}
       response = PW.HttpHandler.handle_request(request_map)
-      assert response == "HTTP/1.1 200 OK\r\ncontent-length: 0\r\n\r\n"
+
+      assert response ==
+               "HTTP/1.1 200 OK\r\ncontent-length: 237\r\n\r\n<html><head></head><body><a href='/file1'>file1</a><a href='/file2'>file2</a><a href='/image.gif'>image.gif</a><a href='/image.jpeg'>image.jpeg</a><a href='/image.png'>image.png</a><a href='/text-file.txt'>text-file.txt</a></body></html>"
+    end
+
+    test "call to /cat-form/data will return 404 Not Found when DataState is not set" do
+      DataState.new()
+      DataState.post("")
+      request_map = %{path: "/cat-form/data", request_type: "GET"}
+      response = PW.HttpHandler.handle_request(request_map)
+      assert response == "HTTP/1.1 404 Not Found\r\ncontent-length: 0\r\n\r\n"
+    end
+
+    test "call to /cat-form will return 201 Created" do
+      DataState.post("working!")
+      request_map = %{path: "/cat-form", request_type: "POST"}
+      response = PW.HttpHandler.handle_request(request_map)
+
+      assert response ==
+               "HTTP/1.1 201 Created\r\nlocation: /cat-form/data\r\ncontent-length: 0\r\n\r\n"
     end
 
     test "call to '/cookie?type=chocolate' will return 200 OK" do
       request_map = %{path: "/cookie", request_type: "GET", querystring: ["type=chocolate"]}
       response = PW.HttpHandler.handle_request(request_map)
-      assert response == "HTTP/1.1 200 OK\r\ncontent-length: 61\r\n\r\n<html><head></head><body>Eat<br/>mmmm chocolate</body></html>"
+
+      assert response ==
+               "HTTP/1.1 200 OK\r\ncontent-length: 61\r\n\r\n<html><head></head><body>Eat<br/>mmmm chocolate</body></html>"
     end
 
     test "call to /tea will return 200 OK" do

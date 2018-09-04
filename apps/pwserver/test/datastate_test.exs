@@ -4,10 +4,8 @@ defmodule DataStateTests do
 
   describe "DataState unit tests" do
     setup do
-      {state, data_state} = DataState.new
-      Logger.debug "Current data state: #{state}"
-
-#      %{state: data_state}
+      {state, _} = DataState.new()
+      Logger.debug("Current data state: #{state}")
     end
 
     test "post/2 should set data" do
@@ -21,6 +19,5 @@ defmodule DataStateTests do
       data = DataState.delete()
       assert data == :ok
     end
-
   end
 end

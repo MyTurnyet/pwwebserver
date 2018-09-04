@@ -3,7 +3,7 @@ defmodule PW.Server do
 
   def listen(tcp_wrapper \\ :gen_tcp, port_number \\ 5000) do
     Logger.info("Opening listener on port #{port_number}")
-    DataState.new
+    DataState.new()
 
     {:ok, port_socket} =
       tcp_wrapper.listen(port_number, [:binary, packet: :line, active: false, reuseaddr: true])
@@ -35,8 +35,10 @@ defmodule PW.Server do
   end
 
   def parse_request({:ok, request_message}) do
-    inspect request_message
-            |> Logger.debug
+    inspect(
+      request_message
+      |> Logger.debug()
+    )
 
     [first_line | message_data] = request_message
     [request_type, request_path, _] = String.split(first_line, " ")
@@ -49,13 +51,13 @@ defmodule PW.Server do
   def add_path_and_querystring(request_map, request_path) do
     if String.contains?(request_path, "?") do
       [path, querystring] = String.split(request_path, "?")
+
       Map.put(request_map, :path, path)
       |> Map.put(:querystring, [querystring])
     else
       Map.put(request_map, :path, request_path)
     end
   end
-
 
   def create_response(request) do
     PW.HttpHandler.handle_request(request)

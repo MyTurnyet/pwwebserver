@@ -8,20 +8,43 @@ defmodule PW.HttpHandler do
   end
 
   def handle_request(request_map) do
-
     response_map =
       case request_map.path do
-        "/" -> IndexController.create_response(request_map.request_type)
-        "/tea" -> TeaController.create_response(request_map.request_type)
-        "/coffee" -> CoffeeController.create_response(request_map.request_type)
-        "/cookie" -> Cookiecontroller.create_response(request_map)
-        "/method_options" -> MethodOptionsController.create_response(request_map.request_type)
-        "/method_options2" -> MethodOptions2Controller.create_response(request_map.request_type)
-        "/form" -> FormController.create_response(request_map)
-        "/put-target" -> PutTargetController.create_response(request_map.request_type)
-        "/redirect" -> RedirectController.create_response(request_map.request_type)
-        "/logs" -> LogsController.create_response(request_map)
-        _ -> send_404_response()
+        "/" ->
+          IndexController.create_response(request_map.request_type)
+
+        "/tea" ->
+          TeaController.create_response(request_map.request_type)
+
+        "/coffee" ->
+          CoffeeController.create_response(request_map.request_type)
+
+        "/cookie" ->
+          Cookiecontroller.create_response(request_map)
+
+        "/method_options" ->
+          MethodOptionsController.create_response(request_map.request_type)
+
+        "/method_options2" ->
+          MethodOptions2Controller.create_response(request_map.request_type)
+
+        "/form" ->
+          FormController.create_response(request_map)
+
+        "/put-target" ->
+          PutTargetController.create_response(request_map.request_type)
+
+        "/redirect" ->
+          RedirectController.create_response(request_map.request_type)
+
+        "/logs" ->
+          LogsController.create_response(request_map)
+
+        path when path in ["/cat-form", "/cat-form/data"] ->
+          CatFormController.create_response(request_map)
+
+        _ ->
+          send_404_response()
       end
 
     format_response(response_map)
@@ -29,7 +52,7 @@ defmodule PW.HttpHandler do
 
   def send_404_response() do
     HeaderStatus.add_404_not_found_status(%{})
-    |> BodyFactory.add_empty_body
-    |> HeaderStatus.add_content_length_header
+    |> BodyFactory.add_empty_body()
+    |> HeaderStatus.add_content_length_header()
   end
 end

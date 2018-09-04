@@ -4,6 +4,7 @@ defmodule CookieTests do
   describe "Cookie unit tests" do
     test "response_for_get/1 should return 200 OK status" do
       response = Cookiecontroller.response_for_get()
+
       assert response ==
                %{
                  body: "<html><head></head><body>Eat<br/>mmmm chocolate</body></html>",
@@ -22,6 +23,7 @@ defmodule CookieTests do
           type: "chocolate"
         ]
       }
+
       response = Cookiecontroller.create_response(request_map)
 
       assert response ==

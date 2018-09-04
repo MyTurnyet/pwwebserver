@@ -1,5 +1,6 @@
 defmodule IndexController do
   require HeaderStatus
+  require BodyFactory
   require Logger
 
   def create_response(request_type) do
@@ -11,14 +12,13 @@ defmodule IndexController do
   end
 
   def add_200_status_body(response_map) do
-    body_text = ""
-
-    # "<html><head></head><body><a href=\"image.gif\">image.gf</a><a href=\"file2\">file2</a></body>"
-
     header = response_map.header
-    header = header ++ [content_length: "content-length: #{String.length(body_text)}"]
-    response_map = Map.put(response_map, :header, header)
-    Map.put(response_map, :body, body_text)
+
+    Map.put(response_map, :header, header)
+    |> BodyFactory.create_body(
+      "<a href='/file1'>file1</a><a href='/file2'>file2</a><a href='/image.gif'>image.gif</a><a href='/image.jpeg'>image.jpeg</a><a href='/image.png'>image.png</a><a href='/text-file.txt'>text-file.txt</a>"
+    )
+    |> HeaderStatus.add_content_length_header()
   end
 
   def response_for_get() do

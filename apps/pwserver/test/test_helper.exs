@@ -1,2 +1,2 @@
 ExUnit.start()
-Code.require_file("fakes/fakesocket.ex","./test")
+Code.require_file("fakes/fakesocket.ex", "./test")
