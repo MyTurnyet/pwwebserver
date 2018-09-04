@@ -2,6 +2,7 @@ defmodule CatFormController do
   require HeaderStatus
   require Logger
   require BodyFactory
+  alias State.DataState
 
   def create_response(request_map) do
     case request_map.request_type do

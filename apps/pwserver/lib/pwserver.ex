@@ -1,14 +1,18 @@
 defmodule PW.Server do
   require Logger
+  alias State.DataState
 
   def listen(tcp_wrapper \\ :gen_tcp, port_number \\ 5000) do
     Logger.info("Opening listener on port #{port_number}")
     DataState.new()
 
-    {:ok, port_socket} =
-      tcp_wrapper.listen(port_number, [:binary, packet: :line, active: false, reuseaddr: true])
+    case     tcp_wrapper.listen(port_number, [:binary, packet: :line, active: false, reuseaddr: true]) do
+      {:ok, port_socket} ->
+        loop_acceptor(tcp_wrapper, port_socket)
+      {:error, reason} ->
+        Logger.error("Could not start reciever: #{inspect reason}.")
+    end
 
-    loop_acceptor(tcp_wrapper, port_socket)
   end
 
   def loop_acceptor(tcp_wrapper, socket) do

@@ -1,6 +1,7 @@
 defmodule DataStateTests do
   use ExUnit.Case
   require Logger
+  alias State.DataState
 
   describe "DataState unit tests" do
     setup do

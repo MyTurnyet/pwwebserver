@@ -1,0 +1,2 @@
+defmodule InputBufferTests do
+end

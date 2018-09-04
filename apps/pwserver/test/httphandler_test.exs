@@ -1,6 +1,7 @@
 defmodule PW.HttpHandlerTest do
   use ExUnit.Case
   require HeaderStatus
+  alias State.DataState
 
   describe "PW.HttpHandler unit Tests" do
     test "format_response/1 will return the response as a string" do
@@ -36,6 +37,7 @@ defmodule PW.HttpHandlerTest do
     end
 
     test "call to /cat-form will return 201 Created" do
+      DataState.new()
       DataState.post("working!")
       request_map = %{path: "/cat-form", request_type: "POST"}
       response = PW.HttpHandler.handle_request(request_map)

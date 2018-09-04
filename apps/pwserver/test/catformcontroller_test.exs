@@ -1,6 +1,7 @@
 defmodule CatFormControllerTests do
   use ExUnit.Case
   require HeaderStatus
+  alias State.DataState
 
   describe "CatForm Controller unit tests" do
     test "response_for_get/0 shoulde return 404 Not Found when no data set" do

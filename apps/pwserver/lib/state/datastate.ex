@@ -1,4 +1,4 @@
-defmodule DataState do
+defmodule State.DataState do
   def new do
     Agent.start_link(fn -> "" end, name: __MODULE__)
   end
