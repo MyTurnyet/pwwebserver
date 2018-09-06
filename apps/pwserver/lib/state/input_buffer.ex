@@ -8,7 +8,7 @@ defmodule State.InputBuffer do
   def init(args) do
     {:ok, args}
   end
-  def create do
+  def create() do
     GenServer.start_link(__MODULE__, @initial_state)
   end
 
