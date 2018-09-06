@@ -1,4 +1,4 @@
-defmodule PW.HttpHandler do
+defmodule PW.Server.HttpHandler do
   require Logger
 
   def format_response(response_map) do

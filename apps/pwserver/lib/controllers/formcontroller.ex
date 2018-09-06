@@ -1,12 +1,12 @@
 defmodule FormController do
   require HeaderStatus
-  require PW.HttpHandler
   require Logger
+  alias PW.Server.HttpHandler
 
   def create_response(request_map) do
     case request_map.request_type do
       "POST" -> response_for_post()
-      _ -> PW.HttpHandler.send_404_response()
+      _ -> HttpHandler.send_404_response()
     end
   end
 

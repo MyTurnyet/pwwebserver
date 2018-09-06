@@ -2,11 +2,12 @@ defmodule Cookiecontroller do
   require HeaderStatus
   require BodyFactory
   require Logger
+  alias PW.Server.HttpHandler
 
   def create_response(request_map) do
     case request_map.request_type do
       "GET" -> response_for_get()
-      _ -> PW.HttpHandler.send_404_response()
+      _ -> HttpHandler.send_404_response()
     end
   end
 

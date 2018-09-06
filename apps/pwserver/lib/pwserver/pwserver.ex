@@ -1,6 +1,7 @@
 defmodule PW.Server do
   require Logger
   alias State.DataState
+  alias PW.Server.HttpHandler
 
   def listen(tcp_wrapper \\ :gen_tcp, port_number \\ 5000) do
     Logger.info("Opening listener on port #{port_number}")
@@ -64,7 +65,7 @@ defmodule PW.Server do
   end
 
   def create_response(request) do
-    PW.HttpHandler.handle_request(request)
+    HttpHandler.handle_request(request)
   end
 
   defp write_response(line, tcp_wrapper, socket) do

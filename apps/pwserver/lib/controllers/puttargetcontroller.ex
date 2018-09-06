@@ -1,12 +1,12 @@
 defmodule PutTargetController do
   require HeaderStatus
-  require PW.HttpHandler
   require Logger
+  alias PW.Server.HttpHandler
 
   def create_response(request_type) do
     case request_type do
       "PUT" -> response_for_put()
-      _ -> PW.HttpHandler.send_404_response()
+      _ -> HttpHandler.send_404_response()
     end
   end
 
